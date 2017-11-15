@@ -6,10 +6,7 @@
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
 
-  var state = [
-    { id: -3, description: 'first todo' },
-    { id: -2, description: 'second todo' },
-    { id: -1, description: 'third todo' },
+  var state = [ {id:1, description:"One", done:false}
   ]; // this is our initial todoList
 
   // This function takes a todo, it returns the DOM node representing that todo
@@ -25,10 +22,23 @@
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
-    todoNode.appendChild(deleteButtonNode);
 
     // add markTodo button
+    var markButtonNode = document.createElement('button');
+    markButtonNode.addEventListener('click', function(event) {
+      var newState = todoFunctions.markTodo(state, todo.id);
+      update(newState);
+    });
 
+    todoNode.id=todo.id;
+    todoNode.innerText=todo.description;
+    if(todo.done===true){
+      todoNode.className="checked";
+    } else
+    todoNode.className="not-checked";
+    todoNode.appendChild(markButtonNode);
+    todoNode.appendChild(deleteButtonNode);
+    console.log(todo)
     // add classes for css
 
     return todoNode;
@@ -39,12 +49,12 @@
     addTodoForm.addEventListener('submit', function(event) {
       // https://developer.mozilla.org/en-US/docs/Web/Events/submit
       // what does event.preventDefault do?
+      event.preventDefault();
       // what is inside event.target?
 
-      var description = '?'; // event.target ....
-
+      var description = document.querySelector('input[name=description]').value; // event.target ....
       // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
+      var newState = todoFunctions.addTodo(state, description); // ?? change this!
       update(newState);
     });
   }
