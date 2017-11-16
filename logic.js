@@ -1,6 +1,8 @@
 // Part 1. Fill in any missing parts of the todoFunction object!
 // you can access these on todo.todoFunctions
 // For part one we expect you to use tdd
+
+
 var todoFunctions = {
   // todoFunctions.generateId() will give you a unique id
   // You do not need to understand the implementation of this function.
@@ -36,6 +38,11 @@ var todoFunctions = {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // return a new array, this should not contain any todo with an id of idToDelete
     // hint: array.filter
+    return todos.filter(function(x){
+      if(x.id !== idToDelete){
+        return x;
+      }
+    });
   },
 
   markTodo: function(todos, idToMark) {
@@ -43,12 +50,26 @@ var todoFunctions = {
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
     // hint: array.map
+    return todos.map(function(idToDon){
+      if(idToDon.id == idToMark){
+        if(idToDon.done == false){
+          idToDon.done = true;
+           return idToDon;
+        }
+        else{
+          idToDon.done = false;
+           return idToDon;
+        }
+      }
+      return idToDon;
+    });
   },
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
     // sortFunction will have same signature as the sort function in array.sort
     // hint: array.slice, array.sort
+    
   },
 };
 
