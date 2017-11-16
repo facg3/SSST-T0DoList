@@ -61,7 +61,12 @@ body{
       border-color: #90c9e5;
   }
 
-
+  .li-marked{
+      border-color:green!important;
+  }
+  .li-marked:hover{
+    border-color: red!important;
+  }
 
   .delete, .mark{
       float: right;

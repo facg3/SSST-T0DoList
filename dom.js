@@ -29,8 +29,8 @@
         if(todo.done === true){
           SpanDescription.className = "todo-checked" ;
           markButtonNode.innerText="Unmark";
-
-        }
+          todoNode.classList+=" li-marked";
+          }
           else {
             SpanDescription.className = "todo-not-checked" ;
             markButtonNode.innerText="Mark";
