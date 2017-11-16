@@ -41,13 +41,13 @@ var todoFunctions = {
   },
 
   sortTodos: function(todos) {
-    var sortedTodos =  todos.sort(function(x,y){
-      return x.done-y.done;
-    })
-    return sortedTodos
-  },
-};
 
+    var sorted = todos.sort(function(x,y){
+    return x.done - y.done;
+  });
+  return sorted;
+}
+}
 
 // http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
 if (typeof module !== 'undefined') {

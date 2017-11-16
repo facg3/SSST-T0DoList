@@ -41,6 +41,7 @@
         todoNode.appendChild(deleteButtonNode);
         todoNode.appendChild(markButtonNode);
 
+
         return todoNode;
     };
 
@@ -50,16 +51,15 @@
     // event.target ....
     var description = {description: document.querySelector('input[name=description]').value};
     if(description.description.trim()!==""){
-      var newState = todoFunctions.addTodo(state, description); // ?? change this!
-      document.querySelector('input[name=description]').value="";
-      console.log(newState);
+      var newState = todoFunctions.addTodo(state, description);
       newState = todoFunctions.sortTodos(newState);
-      console.log(newState);
+      document.querySelector('input[name=description]').value="";
+
       update(newState);
+
     }
       else alert("Soooooo, You gonna do nothing? interesting!");
     });
-
   }
 
   var update = function(newState) {

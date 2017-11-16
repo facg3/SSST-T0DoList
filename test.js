@@ -9,15 +9,18 @@ test('Example test', function(t) {
                                 {id: 2 , description: "Hello" , done: false}],
                                      1),
                                [{id: 2 , description: "Hello" , done: false}],
-                               "test3: Only Object 2.");
+                               "Only Object 2.");
 
   t.deepEqual(logic.markTodo([{id: 1 , description: " HI " , done: false},
                               {id: 2 , description: "Hello" , done: false}],
                                    2),
                              [{id: 1 , description : " HI " , done: false},
                               {id: 2 , description : "Hello" , done: true}],
-                              "test4: 2 Must be true.");
-  t.deepEqual(logic.sortTodos([{id:1 , description: "One",done:true},{id:2 , description: "Two",done:false},{id:3 , description: "Three",done:false}])
-                             ,[{id:2 , description: "Two",done:false},{id:3 , description: "Three",done:false},{id:1 , description: "One",done:true}], "test5: actual should be equal to expected");
+                              "2 Must be true.");
+  t.deepEqual(logic.sortTodos([{id: 1 , description: "HI" , done: true},
+                              {id: 2 , description: "Hello" , done: false}]),
+                             [{id: 2 , description : "Hello" , done: false},
+                              {id: 1 , description : "HI" , done: true}],
+                              "most be sorted");
   t.end();
 });
