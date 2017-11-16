@@ -1,71 +1,57 @@
-// part 2 linking it all together
-// The function here is called an iife,
-// it keeps everything inside hidden from the rest of our application
 (function() {
-  // This is the dom node where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
+  var state = [];
 
-  var state = [ {id:1, description:"One", done:false}
-  ]; // this is our initial todoList
-
-  // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
-    var todoNode = document.createElement('li');
-    // you will need to use addEventListener
+        var todoNode = document.createElement('li');
+        var deleteButtonNode = document.createElement('button');
+        deleteButtonNode.innerText="Delete";
+        deleteButtonNode.addEventListener('click', function(event) {
+          var newState = todoFunctions.deleteTodo(state, todo.id);
+          update(newState);
+        });
 
-    // add span holding description
+        var markButtonNode = document.createElement('button');
+        markButtonNode.innerText="Mark";
+        markButtonNode.addEventListener('click', function(event) {
+          var newState = todoFunctions.markTodo(state, todo.id);
+          update(newState);
+        });
 
-    // this adds the delete button
-    var deleteButtonNode = document.createElement('button');
-    deleteButtonNode.addEventListener('click', function(event) {
-      var newState = todoFunctions.deleteTodo(state, todo.id);
-      update(newState);
-    });
+        todoNode.id=todo.id;
+        todoNode.innerText=todo.description;
+        if(todo.done===true){
 
-    // add markTodo button
-    var markButtonNode = document.createElement('button');
-    markButtonNode.addEventListener('click', function(event) {
-      var newState = todoFunctions.markTodo(state, todo.id);
-      update(newState);
-    });
+          todoNode.className+=" todo-checked";
+          markButtonNode.innerText="Unmark";
+        }
+          else {
+            todoNode.className+=" todo-not-checked";
+            markButtonNode.innerText="Mark";
+            console.log(todoNode) ;
+          }
+        todoNode.appendChild(markButtonNode);
+        todoNode.appendChild(deleteButtonNode);
 
-    todoNode.id=todo.id;
-    todoNode.innerText=todo.description;
-    if(todo.done===true){
-      todoNode.className="checked";
-    } else
-    todoNode.className="not-checked";
-    todoNode.appendChild(markButtonNode);
-    todoNode.appendChild(deleteButtonNode);
-    console.log(todo)
-    // add classes for css
+        return todoNode;
+    };
 
-    return todoNode;
-  };
-
-  // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function(event) {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-      // what does event.preventDefault do?
-      event.preventDefault();
-      // what is inside event.target?
-
-      var description = document.querySelector('input[name=description]').value; // event.target ....
-      // hint: todoFunctions.addTodo
-      var newState = todoFunctions.addTodo(state, description); // ?? change this!
-      update(newState);
+    event.preventDefault();
+    // event.target ....
+    var description = {description: document.querySelector('input[name=description]').value};
+    var newState = todoFunctions.addTodo(state, description); // ?? change this!
+    update(newState);
     });
   }
 
-  // you should not need to change this function
   var update = function(newState) {
     state = newState;
     renderState(state);
   };
 
-  // you do not need to change this function
   var renderState = function(state) {
     var todoListNode = document.createElement('ul');
 
@@ -73,7 +59,6 @@
       todoListNode.appendChild(createTodoNode(todo));
     });
 
-    // you may want to add a class for css
     container.replaceChild(todoListNode, container.firstChild);
   };
 

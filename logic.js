@@ -1,9 +1,4 @@
-// Part 1. Fill in any missing parts of the todoFunction object!
-// you can access these on todo.todoFunctions
-// For part one we expect you to use tdd
 var todoFunctions = {
-  // todoFunctions.generateId() will give you a unique id
-  // You do not need to understand the implementation of this function.
   generateId: (function() {
     var idCounter = 0;
 
@@ -14,8 +9,6 @@ var todoFunctions = {
     return incrementCounter;
   })(),
 
-  //cloneArrayOfObjects will create a copy of the todos array
-  //changes to the new array don't affect the original
   cloneArrayOfObjects: function(todos) {
     return todos.map(function(todo){
       return JSON.parse(JSON.stringify(todo));
@@ -28,30 +21,28 @@ var todoFunctions = {
       description: newTodo.description ,
       done: false
     };
-    var newArray = todos.concat(ourNewTodo);
-    return newArray;
+    return todos.concat(ourNewTodo);
     },
 
   deleteTodo: function(todos, idToDelete) {
-    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
-    // return a new array, this should not contain any todo with an id of idToDelete
-    // hint: array.filter
     return todos.filter(function(idToKeep){
       if(idToKeep.id !== idToDelete) return idToKeep;
     })
   },
 
   markTodo: function(todos, idToMark) {
-    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
-    // in the new todo array, all elements will remain unchanged except the one with id: idToMark
-    // this element will have its done value toggled
-    // hint: array.map
     return todos.map(function(idToDone){
       if(idToDone.id === idToMark){
-        idToDone.done=true;
-        return idToDone;
+          if(idToDone.done === false){
+            idToDone.done=true;
+            return idToDone;
+          }
+          else{
+            idToDone.done=false;
+            return idToDone;
+          }
       }
-      else return idToDone;
+        else return idToDone;
     })
   },
 
@@ -65,9 +56,6 @@ var todoFunctions = {
 };
 
 
-// Why is this if statement necessary?
-// The answer has something to do with needing to run code both in the browser and in Node.js
-// See this article for more details:
 // http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
 if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
