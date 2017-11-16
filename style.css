@@ -84,7 +84,7 @@ body{
       background: #e04b35;
   }
   .mark:hover{
-      background: #333;
+      background: #999;
   }
   .todo-checked{
     text-decoration: line-through;

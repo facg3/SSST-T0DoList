@@ -33,25 +33,18 @@ var todoFunctions = {
   markTodo: function(todos, idToMark) {
     return todos.map(function(idToDone){
       if(idToDone.id === idToMark){
-          if(idToDone.done === false){
-            idToDone.done=true;
-            return idToDone;
-          }
-          else{
-            idToDone.done=false;
-            return idToDone;
-          }
+        idToDone.done=!idToDone.done;
+        return idToDone;
       }
         else return idToDone;
     })
   },
 
-  sortTodos: function(todos, sortFunction) {
-    // stretch goal! Do this last
-    // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
-    // sortFunction will have same signature as the sort function in array.sort
-    // hint: array.slice, array.sort
-
+  sortTodos: function(todos) {
+    var sortedTodos =  todos.sort(function(x,y){
+      return x.done-y.done;
+    })
+    return sortedTodos
   },
 };
 

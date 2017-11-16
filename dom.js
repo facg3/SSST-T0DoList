@@ -13,6 +13,7 @@
         markButtonNode.innerText="Mark";
         markButtonNode.addEventListener('click', function(event) {
           var newState = todoFunctions.markTodo(state, todo.id);
+          newState = todoFunctions.sortTodos(newState);
           update(newState);
         });
 
@@ -21,6 +22,7 @@
         deleteButtonNode.innerText="Delete";
         deleteButtonNode.addEventListener('click', function(event) {
           var newState = todoFunctions.deleteTodo(state, todo.id);
+          newState = todoFunctions.sortTodos(newState);
           update(newState);
         });
 
@@ -39,7 +41,6 @@
         todoNode.appendChild(deleteButtonNode);
         todoNode.appendChild(markButtonNode);
 
-
         return todoNode;
     };
 
@@ -51,10 +52,14 @@
     if(description.description.trim()!==""){
       var newState = todoFunctions.addTodo(state, description); // ?? change this!
       document.querySelector('input[name=description]').value="";
+      console.log(newState);
+      newState = todoFunctions.sortTodos(newState);
+      console.log(newState);
       update(newState);
     }
       else alert("Soooooo, You gonna do nothing? interesting!");
     });
+
   }
 
   var update = function(newState) {
