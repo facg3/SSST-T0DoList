@@ -1,5 +1,5 @@
 # SSST
-## Project #1: TODO-LIST Application.
+## Project #2: TODO-LIST Application.
 
 ## WHY:
 Web is now the most accessible Life feature in the whole world, it's growing even bigger than it is, and it will continue shaping our lives. So, we thought.. Why not bring up a ToDo List application on a web page! We know lots will like it.
