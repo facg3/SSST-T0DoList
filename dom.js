@@ -13,6 +13,7 @@
         markButtonNode.innerText="Mark";
         markButtonNode.addEventListener('click', function(event) {
           var newState = todoFunctions.markTodo(state, todo.id);
+          newState = todoFunctions.sortTodos(newState);
           update(newState);
         });
 
@@ -21,6 +22,7 @@
         deleteButtonNode.innerText="Delete";
         deleteButtonNode.addEventListener('click', function(event) {
           var newState = todoFunctions.deleteTodo(state, todo.id);
+          newState = todoFunctions.sortTodos(newState);
           update(newState);
         });
 
@@ -49,9 +51,12 @@
     // event.target ....
     var description = {description: document.querySelector('input[name=description]').value};
     if(description.description.trim()!==""){
-      var newState = todoFunctions.addTodo(state, description); // ?? change this!
+      var newState = todoFunctions.addTodo(state, description);
+      newState = todoFunctions.sortTodos(newState);
       document.querySelector('input[name=description]').value="";
+
       update(newState);
+
     }
       else alert("Soooooo, You gonna do nothing? interesting!");
     });
