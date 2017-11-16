@@ -33,20 +33,15 @@ var todoFunctions = {
   markTodo: function(todos, idToMark) {
     return todos.map(function(idToDone){
       if(idToDone.id === idToMark){
-          if(idToDone.done === false){
-            idToDone.done=true;
-            return idToDone;
-          }
-          else{
-            idToDone.done=false;
-            return idToDone;
-          }
+        idToDone.done=!idToDone.done;
+        return idToDone;
       }
         else return idToDone;
     })
   },
 
   sortTodos: function(todos) {
+
     var sorted = todos.sort(function(x,y){
     return x.done - y.done;
   });
