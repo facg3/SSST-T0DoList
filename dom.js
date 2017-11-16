@@ -1,22 +1,12 @@
 (function() {
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
-  var state = [];
+  var state = [{id:1, description:"One", done:false}];
 
   var createTodoNode = function(todo) {
         var todoNode = document.createElement('li');
-        console.log(todoNode) ;
-
         var SpanDescription = document.createElement('span') ;
         SpanDescription.textContent = todo.description ;
-
-        var deleteButtonNode = document.createElement('button');
-        deleteButtonNode.className="delete";
-        deleteButtonNode.innerText="Delete";
-        deleteButtonNode.addEventListener('click', function(event) {
-          var newState = todoFunctions.deleteTodo(state, todo.id);
-          update(newState);
-        });
 
         var markButtonNode = document.createElement('button');
         markButtonNode.className = 'mark' ;
@@ -26,25 +16,29 @@
           update(newState);
         });
 
-        todoNode.id=todo.id;
-       //   todoNode.innerText=todo.description;
-        if(todo.done === true){
+        var deleteButtonNode = document.createElement('button');
+        deleteButtonNode.className="delete";
+        deleteButtonNode.innerText="Delete";
+        deleteButtonNode.addEventListener('click', function(event) {
+          var newState = todoFunctions.deleteTodo(state, todo.id);
+          update(newState);
+        });
 
-          // todoNode.firstChild.className += "todo-checked";
+        if(todo.done === true){
           SpanDescription.className = "todo-checked" ;
           markButtonNode.innerText="Unmark";
 
         }
           else {
-            // todoNode.className += "todo-not-checked";
             SpanDescription.className = "todo-not-checked" ;
             markButtonNode.innerText="Mark";
-            // console.log(todoNode) ;
           }
 
+        todoNode.id=todo.id;
         todoNode.appendChild(SpanDescription);
-        todoNode.appendChild(markButtonNode);
         todoNode.appendChild(deleteButtonNode);
+        todoNode.appendChild(markButtonNode);
+
 
         return todoNode;
     };
@@ -54,8 +48,12 @@
     event.preventDefault();
     // event.target ....
     var description = {description: document.querySelector('input[name=description]').value};
-    var newState = todoFunctions.addTodo(state, description); // ?? change this!
-    update(newState);
+    if(description.description.trim()!==""){
+      var newState = todoFunctions.addTodo(state, description); // ?? change this!
+      document.querySelector('input[name=description]').value="";
+      update(newState);
+    }
+      else alert("Soooooo, You gonna do nothing? interesting!");
     });
   }
 
