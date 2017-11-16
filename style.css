@@ -38,6 +38,10 @@ body{
       color: #444;
   }
 
+  input.submit:hover{
+    background-color:#90c9e5;
+  }
+
   #todo-container{
       margin: 30px;
   }
@@ -54,14 +58,14 @@ body{
   }
 
   #todo-container li:hover{
-      border-color: #9361bf;
+      border-color: #90c9e5;
   }
 
 
 
   .delete, .mark{
       float: right;
-      background: #9361bf;
+      background: #90c9e5;
       padding: 6px;
       border-radius: 4px;
       cursor: pointer;
@@ -70,11 +74,14 @@ body{
       width: 100px;
       padding: 10px;
       margin-left: 10px;
-      border: 1px solid #9361bf;
-      font-size: 20px ; 
+      border: 1px solid #90c9e5;
+      font-size: 18px ;
+      font-weight: bold;
   }
+
+
   .delete:hover{
-      background: #333;
+      background: #e04b35;
   }
   .mark:hover{
       background: #333;
