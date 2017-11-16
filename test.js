@@ -17,5 +17,10 @@ test('Example test', function(t) {
                              [{id: 1 , description : " HI " , done: false},
                               {id: 2 , description : "Hello" , done: true}],
                               "2 Must be true.");
+  t.deepEqual(logic.sortTodos([{id: 1 , description: "HI" , done: true},
+                              {id: 2 , description: "Hello" , done: false}]),
+                             [{id: 2 , description : "Hello" , done: false},
+                              {id: 1 , description : "HI" , done: true}],
+                              "most be sorted");
   t.end();
 });
