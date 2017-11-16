@@ -1,0 +1,52 @@
+.todo-not-checked {
+   text-decoration: none ;
+}
+
+.todo-checked {
+  text-decoration: line-through;
+}
+
+body {
+  background-color:  #d3d3d3 ;
+  width: 100% ;
+  margin: 0 auto;
+  margin: 0 ; padding: 0 ;
+}
+ul li {
+  margin-top: 50px ;
+  list-style-type: none;
+}
+
+form{
+  padding-top: 30px ;
+  margin-bottom: 10px ;
+  width: 50% ;
+  margin: 0 auto;
+
+}
+form input[type = submit] {
+    color: white ;
+    background-color: black ;
+    height: 35px ; width: 100px ;
+}
+form input[type = text] {
+  width: 300px ;
+  height: 30px ;
+}
+#todo-container {
+  margin-left: 60px ;
+}
+#todo-container li {
+ padding-top: 18px ;
+ text-align: center;
+ height: 50px ;
+ width: 650px ;
+ background-color: white ;
+
+}
+#todo-container ul li span {
+  margin-right: 20px ;
+}
+#todo-container ul li input[type = submit] {
+
+}

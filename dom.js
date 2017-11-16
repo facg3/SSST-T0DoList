@@ -5,6 +5,11 @@
 
   var createTodoNode = function(todo) {
         var todoNode = document.createElement('li');
+        console.log(todoNode) ;
+
+        var SpanDescription = document.createElement('span') ;
+        SpanDescription.textContent = todo.description ;
+
         var deleteButtonNode = document.createElement('button');
         deleteButtonNode.innerText="Delete";
         deleteButtonNode.addEventListener('click', function(event) {
@@ -20,17 +25,22 @@
         });
 
         todoNode.id=todo.id;
-        todoNode.innerText=todo.description;
-        if(todo.done===true){
+       //   todoNode.innerText=todo.description;
+        if(todo.done === true){
 
-          todoNode.className+=" todo-checked";
+          // todoNode.firstChild.className += "todo-checked";
+          SpanDescription.className += "todo-checked" ;
           markButtonNode.innerText="Unmark";
+
         }
           else {
-            todoNode.className+=" todo-not-checked";
+            // todoNode.className += "todo-not-checked";
+            SpanDescription.className += "todo-not-checked" ;
             markButtonNode.innerText="Mark";
-            console.log(todoNode) ;
+            // console.log(todoNode) ;
           }
+
+        todoNode.appendChild(SpanDescription);
         todoNode.appendChild(markButtonNode);
         todoNode.appendChild(deleteButtonNode);
 
