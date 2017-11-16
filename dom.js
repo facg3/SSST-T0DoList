@@ -11,6 +11,7 @@
         SpanDescription.textContent = todo.description ;
 
         var deleteButtonNode = document.createElement('button');
+        deleteButtonNode.className="delete";
         deleteButtonNode.innerText="Delete";
         deleteButtonNode.addEventListener('click', function(event) {
           var newState = todoFunctions.deleteTodo(state, todo.id);
@@ -18,6 +19,7 @@
         });
 
         var markButtonNode = document.createElement('button');
+        markButtonNode.className = 'mark' ;
         markButtonNode.innerText="Mark";
         markButtonNode.addEventListener('click', function(event) {
           var newState = todoFunctions.markTodo(state, todo.id);
@@ -29,13 +31,13 @@
         if(todo.done === true){
 
           // todoNode.firstChild.className += "todo-checked";
-          SpanDescription.className += "todo-checked" ;
+          SpanDescription.className = "todo-checked" ;
           markButtonNode.innerText="Unmark";
 
         }
           else {
             // todoNode.className += "todo-not-checked";
-            SpanDescription.className += "todo-not-checked" ;
+            SpanDescription.className = "todo-not-checked" ;
             markButtonNode.innerText="Mark";
             // console.log(todoNode) ;
           }

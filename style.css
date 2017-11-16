@@ -1,52 +1,84 @@
-.todo-not-checked {
-   text-decoration: none ;
+body{
+    font-family: Tahoma;
+    color: #444;
+    letter-spacing: 1px;
 }
 
-.todo-checked {
-  text-decoration: line-through;
+#wrapper{
+    width: 90%;
+    max-width: 960px;
+    margin: 20px auto;
+    border-radius: 6px;
+    box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    padding: 0 0 20px;
+    overflow: hidden;
+    border: 1px solid lightgray;
 }
+#page-banner{
+    background: #eee ;
+    padding: 10px 0;
 
-body {
-  background-color:  #d3d3d3 ;
-  width: 100% ;
-  margin: 0 auto;
-  margin: 0 ; padding: 0 ;
-}
-ul li {
-  margin-top: 50px ;
-  list-style-type: none;
-}
+  }
 
-form{
-  padding-top: 30px ;
-  margin-bottom: 10px ;
-  width: 50% ;
-  margin: 0 auto;
+  #page-banner h1, #page-banner p, #page-banner form{
+      width: 100%;
+      text-align: center;
+      margin: 10px 0;
+  }
+  #page-banner input{
+      width: 90%;
+      max-width: 300px;
+      margin: 20px auto;
+      display: block;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #444;
+  }
 
-}
-form input[type = submit] {
-    color: white ;
-    background-color: black ;
-    height: 35px ; width: 100px ;
-}
-form input[type = text] {
-  width: 300px ;
-  height: 30px ;
-}
-#todo-container {
-  margin-left: 60px ;
-}
-#todo-container li {
- padding-top: 18px ;
- text-align: center;
- height: 50px ;
- width: 650px ;
- background-color: white ;
+  #todo-container{
+      margin: 30px;
+  }
 
-}
-#todo-container ul li span {
-  margin-right: 20px ;
-}
-#todo-container ul li input[type = submit] {
+  #todo-container ul{
+      list-style-type: none;
+      padding: 0;
+  }
+  #todo-container li{
+      padding: 20px;
+      border-left: 5px solid #ddd;
+      margin: 20px 10px;
+      font-size: 20px ;
+  }
 
-}
+  #todo-container li:hover{
+      border-color: #9361bf;
+  }
+
+
+
+  .delete, .mark{
+      float: right;
+      background: #9361bf;
+      padding: 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+      width: 100px;
+      padding: 10px;
+      margin-left: 10px;
+      border: 1px solid #9361bf;
+      font-size: 20px ; 
+  }
+  .delete:hover{
+      background: #333;
+  }
+  .mark:hover{
+      background: #333;
+  }
+  .todo-checked{
+    text-decoration: line-through;
+  }
