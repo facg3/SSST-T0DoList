@@ -11,11 +11,18 @@
         var markButtonNode = document.createElement('button');
         markButtonNode.className = 'mark' ;
         markButtonNode.innerText="Mark";
+
         markButtonNode.addEventListener('click', function(event) {
           var newState = todoFunctions.markTodo(state, todo.id);
           newState = todoFunctions.sortTodos(newState);
           update(newState);
         });
+        if(todo.done){
+          markButtonNode.innerText="Unmark";
+          SpanDescription.classList.toggle('todo-checked');
+          todoNode.classList.toggle('li-marked');
+        }
+        else markButtonNode.innerText="Mark";
 
         var deleteButtonNode = document.createElement('button');
         deleteButtonNode.className="delete";
@@ -26,37 +33,23 @@
           update(newState);
         });
 
-        if(todo.done === true){
-          SpanDescription.className = "todo-checked" ;
-          markButtonNode.innerText="Unmark";
-          todoNode.classList+=" li-marked";
-          }
-          else {
-            SpanDescription.className = "todo-not-checked" ;
-            markButtonNode.innerText="Mark";
-          }
-
         todoNode.id=todo.id;
         todoNode.appendChild(SpanDescription);
         todoNode.appendChild(deleteButtonNode);
         todoNode.appendChild(markButtonNode);
-
-
         return todoNode;
     };
 
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    // event.target ....
-    var description = {description: document.querySelector('input[name=description]').value};
+    var inputSelect = document.querySelector('input[name=description]');
+    var description = {description: inputSelect.value};
     if(description.description.trim()!==""){
       var newState = todoFunctions.addTodo(state, description);
       newState = todoFunctions.sortTodos(newState);
-      description.description="";
-
+      inputSelect.value =  "";
       update(newState);
-
     }
       else alert("Soooooo, You gonna do nothing? interesting!");
     });
