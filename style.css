@@ -4,7 +4,7 @@ body{
     letter-spacing: 1px;
 }
 
-#wrapper{
+.wrapper{
     width: 90%;
     max-width: 960px;
     margin: 20px auto;
@@ -15,18 +15,18 @@ body{
     overflow: hidden;
     border: 1px solid lightgray;
 }
-#page-banner{
+.page-banner{
     background: #eee ;
     padding: 10px 0;
 
   }
 
-  #page-banner h1, #page-banner p, #page-banner form{
+  .page-banner h1, .page-banner p, .page-banner form{
       width: 100%;
       text-align: center;
       margin: 10px 0;
   }
-  #page-banner input{
+  .page-banner input{
       width: 90%;
       max-width: 300px;
       margin: 20px auto;
@@ -42,22 +42,22 @@ body{
     background-color:#90c9e5;
   }
 
-  #todo-container{
+  .toDoContainer{
       margin: 30px;
   }
 
-  #todo-container ul{
+  .toDoContainer ul{
       list-style-type: none;
       padding: 0;
   }
-  #todo-container li{
+  .toDoContainer li{
       padding: 20px;
       border-left: 5px solid #ddd;
       margin: 20px 10px;
       font-size: 20px ;
   }
 
-  #todo-container li:hover{
+  .toDoContainer li:hover{
       border-color: #90c9e5;
   }
 
