@@ -1,7 +1,7 @@
 (function() {
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
-  var state = [{id:1, description:"One", done:false}];
+  var state = [{id:0, description:"One", done:false}];
 
   var createTodoNode = function(todo) {
         var todoNode = document.createElement('li');
@@ -53,7 +53,7 @@
     if(description.description.trim()!==""){
       var newState = todoFunctions.addTodo(state, description);
       newState = todoFunctions.sortTodos(newState);
-      document.querySelector('input[name=description]').value="";
+      description.description="";
 
       update(newState);
 
