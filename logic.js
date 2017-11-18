@@ -16,22 +16,25 @@ var todoFunctions = {
   },
 
   addTodo: function(todos, newTodo) {
-    ourNewTodo = {
+    var ourNewTodo = todoFunctions.cloneArrayOfObjects(todos)
+    ourNewTodo.push({
       id: todoFunctions.generateId(),
       description: newTodo.description ,
       done: false
-    };
-    return todos.concat(ourNewTodo);
+    });
+    return ourNewTodo;
     },
 
   deleteTodo: function(todos, idToDelete) {
-    return todos.filter(function(idToKeep){
+    var ourNewTodo = todoFunctions.cloneArrayOfObjects(todos);
+    return ourNewTodo.filter(function(idToKeep){
       if(idToKeep.id !== idToDelete) return idToKeep;
     })
   },
 
   markTodo: function(todos, idToMark) {
-    return todos.map(function(idToDone){
+    var ourNewTodo = todoFunctions.cloneArrayOfObjects(todos);
+    return ourNewTodo.map(function(idToDone){
       if(idToDone.id === idToMark){
         idToDone.done=!idToDone.done;
         return idToDone;
@@ -41,8 +44,8 @@ var todoFunctions = {
   },
 
   sortTodos: function(todos) {
-
-    var sorted = todos.sort(function(x,y){
+    var ourNewTodo = todoFunctions.cloneArrayOfObjects(todos);
+    var sorted = ourNewTodo.sort(function(x,y){
     return x.done - y.done;
   });
   return sorted;
